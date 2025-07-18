@@ -511,6 +511,7 @@ class SFTTrainer(Trainer):
         self._metrics = {"train": defaultdict(list), "eval": defaultdict(list)}
         self._total_train_tokens = 0
 
+        print(self.completion_only_loss)
         train_dataset.to_parquet("train_dataset.parquet")
         if eval_dataset is not None:
             eval_dataset.to_parquet("eval_dataset.parquet")
