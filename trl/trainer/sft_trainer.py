@@ -511,6 +511,10 @@ class SFTTrainer(Trainer):
         self._metrics = {"train": defaultdict(list), "eval": defaultdict(list)}
         self._total_train_tokens = 0
 
+        train_dataset.to_parquet("train_dataset.parquet")
+        if eval_dataset is not None:
+            eval_dataset.to_parquet("eval_dataset.parquet")
+
         # Initialize the Trainer. Parent class will handle:
         # - DeepSpeed configuration (through create_accelerator_and_postprocess)
         # - FSDP setup
