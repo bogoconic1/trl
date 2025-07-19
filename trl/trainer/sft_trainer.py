@@ -476,11 +476,6 @@ class SFTTrainer(Trainer):
                 "between batches. To avoid this, either disable packing by setting `packing=False`, or set "
                 "`attn_implementation='flash_attention_2'` in the model configuration."
             )
-        if args.assistant_only_loss and not is_conversational(train_dataset[0]):
-            raise ValueError(
-                "You set `assistant_only_loss=True`, but the dataset is not conversational. This option is only "
-                "supported for conversational datasets."
-            )
 
         # Dataset
         preprocess_dataset = args.dataset_kwargs is None or not args.dataset_kwargs.get("skip_prepare_dataset", False)
